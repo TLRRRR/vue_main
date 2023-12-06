@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析生命周期</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <h2>当前n的值为：{{n}}</h2>
+        <button @click="add">点我n+1</button> -->
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#root',
+        template: `
+        <div>
+            <h2>当前n的值为：{{n}}</h2>
+            <button @click="add">点我n+1</button>
+        </div>
+        `,
+        data: {
+            n: 1
+        },
+        methods: {
+            add() {
+                this.n++;
+            }
+        },
+        beforeCreate() {
+            console.log("beforeCreate");
+        },
+        // 初始化，数据检测、数据代理
+        created() {
+            console.log("created");
+        },
+        beforeMount() {
+            console.log("beforeMount");
+        },
+        // 重要
+        mounted() {
+            console.log("mounted");
+        },
+        // 重要 when data changes
+        beforeUpdate() {
+            console.log("beforeUpdate");
+        },
+        updated() {
+            console.log("updated");
+        },
+        beforeDestroy() {
+            console.log("beforeDestroy");
+        },
+        destroy() {
+            console.log("destroy");
+        }
+    })
+</script>
+
+</html>
